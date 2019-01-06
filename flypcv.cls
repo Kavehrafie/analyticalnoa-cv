@@ -35,9 +35,9 @@
 
 % set vertical lengths (space above said object)
 \newlength{\secvspace}
-\newlength{\hitemvspace}
+\newlength{\headvspace}
 \setlength{\secvspace}{0pt}
-\setlength{\hitemvspace}{3.5pt}
+\setlength{\headvspace}{3.5pt}
 
 % set margin, footer geometry
 \RequirePackage{geometry}
@@ -58,14 +58,14 @@
 
 %%%%%%
 
-%%% cvtitle -----------------------------------------------------------------------------
+%%% title -------------------------------------------------------------------------------
 
 % supported header parameters
 %   \author, \title, \location, \email, \phone
-\author{Logan Daniel}
-\title{mathematician, educator.}
+\author{Name}
+\title{title}
 \newcommand{\@location}{New York City, NY, USA}
-\newcommand{\@email}{ldan@gmail.com}
+\newcommand{\@email}{email@domain.com}
 \newcommand{\@phone}{123/456-7890}
 \newcommand{\location}[1]{\renewcommand{\@location}{#1}}
 \newcommand{\contact}[1]{\renewcommand{\@contact}{#1}}
@@ -73,12 +73,12 @@
 \newcommand{\phone}[1]{\renewcommand{\@phone}{#1}}
 
 % title geometry
-\newlength{\cvtitleheight}
-\setlength{\cvtitleheight}{0.5in}
+\newlength{\titleheight}
+\setlength{\titleheight}{0.5in}
 
-% use \makecvtitle to place the title within document
-\newcommand{\makecvtitle}{
-  \begin{minipage}[t][\cvtitleheight][c]{0.5\textwidth}
+% use \maketitle to place the title within document
+\renewcommand{\maketitle}{
+  \begin{minipage}[t][\titleheight][c]{0.5\textwidth}
     \flushleft{{\Huge\bfseries
       \@author
     }}
@@ -86,7 +86,7 @@
       \@title
     }}
   \end{minipage}
-  \begin{minipage}[t][\cvtitleheight][c]{0.5\textwidth}
+  \begin{minipage}[t][\titleheight][c]{0.5\textwidth}
     \flushright{
       \@location\\
       \href{mailto:\@email}{\@email} | \@phone
@@ -118,10 +118,10 @@
 %%% cv features -------------------------------------------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%% the blirb --------------------------------------------------------------------------
+%%% the blurb --------------------------------------------------------------------------
 
-% blirb - a simple, ital par for brief descriptions below main items or as standalones
-\newcommand{\blirb}[1]{\par{\itshape#1}}
+% blurb - a simple, ital par for brief descriptions below main items or as standalones
+\newcommand{\blurb}[1]{\par{\itshape#1}}
 
 %%%%%%
 
@@ -160,22 +160,22 @@
 %%% define cvitems ----------------------------------------------------------------------
 
 % headcvitem - for items that act as headers / major items
-\newcvitem{headcvitem}{\bfseries}{}{ | }{}{\hitemvspace}
+\newcvitem{headcvitem}{\bfseries}{}{ | }{}{\headvspace}
 
 % detailcvitem - for detail items under headcvitems
 \newcvitem{detailcvitem}{}{\itshape}{:\ }{}{0pt}
 
 % collectcvitem - for a brief one-line list of items with emphasised header
-\newcvitem{collectcvitem}{\bfseries}{}{\ }{}{\hitemvspace}
+\newcvitem{collectcvitem}{\bfseries}{}{\ }{}{\headvspace}
 
-% blirbcvitem - cvitem with blirb inline (not actually a true cvitem)
-\newcommand{\blirbcvitem}[2]{%%
-  \vspace{\hitemvspace}\par%%
+% blurbcvitem - cvitem with blurb in-line (not actually a true cvitem)
+\newcommand{\blurbcvitem}[2]{%%
+  \vspace{\headvspace}\par%%
   {\bfseries#1}\ {\small\itshape#2}%%
 }
 
 % referencecvitem
-\newcvitem{referencecvitem}{\rmfamily}{\itshape}{,\ }{}{\hitemvspace}
+\newcvitem{referencecvitem}{\rmfamily}{\itshape}{,\ }{}{\headvspace}
 
 %%%%%%
 
